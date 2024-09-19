@@ -18,7 +18,7 @@ const authController = {
 
             const token = generateToken(user);
             const sanitizedUser = sanitizeUser(user);
-            res.cookie("token", token, { httpOnly: true, secure: true, sameSite: "Lax", maxAge: 3600000 });
+            res.cookie("token", token, { httpOnly: true, secure: false, sameSite: "Lax", maxAge: 3600000 });
             return res.apiSuccess({ data: { token, ...sanitizedUser } });
         } catch (error) {
             return res.apiError({ error, message: "server error" });
